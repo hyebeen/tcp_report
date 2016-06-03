@@ -56,14 +56,14 @@ void Comparison_GET(u_char *args, const struct pcap_pkthdr *header, const u_char
 int main()
 {
     pcap_t *handle;
-    char *dev = "eth5";
+    char *dev = "eth2";
     char errbuf[PCAP_ERRBUF_SIZE];
     handle = pcap_open_live(dev, BUFSIZ, 1, 1000, errbuf);
     if (handle == NULL) {
         fprintf(stderr, "Couldn't open device %s: %s\n", dev, errbuf);
         return(2);
     }
-    pcap_loop(hande, -1, Comparison_GET, NULL);
+    pcap_loop(handle, -1, Comparison_GET, NULL);
     pcap_close(handle);
     return(0);
 }
